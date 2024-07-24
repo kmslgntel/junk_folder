@@ -4,7 +4,7 @@ import time
 from cryptography.fernet import Fernet
 import os
 import subprocess
-
+import pyperclip
 
 # JSON 파일 경로와 암호화된 자격 증명 파일 경로
 json_file_path = "coordinates.json"
@@ -42,9 +42,16 @@ def click_at(coordinate):
 
 # ID와 PW 입력 함수
 def type_credentials(id_data, pw_data):
-    pyautogui.typewrite(id_data)
+    #pyautogui.typewrite(id_data)
+    pyperclip.copy(id_data)
+    pyautogui.hotkey('ctrl', 'v')
+    time.sleep(0.1)
     pyautogui.press('tab')
-    pyautogui.typewrite(pw_data)
+    #pyautogui.typewrite(pw_data)
+    time.sleep(0.1)
+    pyperclip.copy(pw_data)
+    pyautogui.hotkey('ctrl', 'v')
+    time.sleep(0.1)
     pyautogui.press('enter')
 
 
